@@ -1,0 +1,22 @@
+CC = g++
+
+
+BASE_FLAGS = -wAll
+
+# INCLUDE BASE DIRECTORY AND BOOST DIRECTORY FOR HEADERS
+LDFLAGS = -I/usr/local/Cellar/boost/1.52.0/include -I/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7
+
+# INCLUDE BASE DIRECTORY AND BOOST DIRECTORY FOR LIB FILES
+LLIBFLAGS = -L/usr/local/Cellar/boost/1.52.0/
+
+# SPECIFIY LINK OPTIONS
+LINKFLAGS = -l boost_thread-mt -lboost_system
+
+# FINAL FLAGS -- TO BE USED THROUGHOUT
+FLAGS = $(BASE_FLAGS) $(LLIBFLAGS) $(LDFLAGS) $(LINKFLAGS)
+
+build : hello.o
+	g++ $(FLAGS) -o hello.o hello.cpp
+# cc -o program $(objects)
+#
+# g++ hello.cpp -o hello.o -lboost_thread-mt -lboost_system-mt -lboost_python-mt -lpython2.7 -I/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7 -c -fPIC
